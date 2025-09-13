@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>I Love U Khushi Animation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            position: relative;
+        }
+
+        .message {
+            position: absolute;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            animation: floatUp 8s linear infinite;
+            opacity: 0;
+            white-space: nowrap;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            80% {
+                transform: translateY(-20vh) scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(0.8);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    const phrases = [
+        "😍 I ❤️ U Khushi 😍",
+        "🥰 I ❤️ U Khushi 🥰",
+        "😘 I ❤️ U Khushi 😘",
+        "💕 I ❤️ U Khushi 💕",
+        "💖 I ❤️ U Khushi 💖"
+    ];
+
+    function createMessage() {
+        const message = document.createElement('div');
+        message.classList.add('message');
+        message.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+        
+        // random horizontal position
+        message.style.left = Math.random() * 90 + 'vw';
+        
+        // random animation duration for variety
+        message.style.animationDuration = (6 + Math.random() * 4) + 's';
+        
+        document.body.appendChild(message);
+        
+        // remove after animation finishes
+        setTimeout(() => {
+            message.remove();
+        }, 10000);
+    }
+
+    // create a message every 500ms
+    setInterval(createMessage, 500);
+</script>
+
+</body>
+</html>
